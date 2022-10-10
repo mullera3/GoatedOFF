@@ -13,9 +13,10 @@ public class Orders {
     private ShippingType shipping;
     private Timestamp dateOrderCreated;
     private Timestamp dateOrderUpdated;
+    private Integer paymentId;
 
     public Orders(Integer orderId, Integer userId, Integer soldById, Integer sneakerId, Double cost,
-                  ShippingType shipping, Timestamp dateOrderCreated, Timestamp dateOrderUpdated) {
+                  ShippingType shipping, Timestamp dateOrderCreated, Timestamp dateOrderUpdated, Integer paymentId) {
         this.orderId = orderId;
         this.userId = userId;
         this.soldById = soldById;
@@ -24,6 +25,15 @@ public class Orders {
         this.shipping = shipping;
         this.dateOrderCreated = dateOrderCreated;
         this.dateOrderUpdated = dateOrderUpdated;
+        this.paymentId = paymentId;
+    }
+
+    public Integer getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(Integer paymentId) {
+        this.paymentId = paymentId;
     }
 
     public Orders() {
