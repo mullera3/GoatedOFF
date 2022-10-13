@@ -12,7 +12,7 @@ public class User {
     private String password;
     private Timestamp dateUserCreated;
     private Timestamp dateUserUpdated;
-    private Integer countryCode;
+    private String countryCode;
     private Integer postalCode;
     private String state;
     private String city;
@@ -21,7 +21,7 @@ public class User {
     }
 
     public User(int id, String firstName, String lastName, Date dob, String email, String password,
-                Timestamp dateUserCreated, Timestamp dateUserUpdated, Integer countryCode, Integer postalCode,
+                Timestamp dateUserCreated, Timestamp dateUserUpdated, String countryCode, Integer postalCode,
                 String state, String city) {
         this.id = id;
         this.firstName = firstName;
@@ -101,11 +101,11 @@ public class User {
         this.dateUserUpdated = dateUserUpdated;
     }
 
-    public Integer getCountryCode() {
+    public String getCountryCode() {
         return countryCode;
     }
 
-    public void setCountryCode(Integer countryCode) {
+    public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
     }
 
