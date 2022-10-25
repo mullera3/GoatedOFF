@@ -22,10 +22,12 @@ export class AuthProvider extends  Component{
                 password: password
             }
 
-            await axios.post("http://localhost:8080/login", data).then((res) => {
-                const currentUserData  = res.data
-                this.state.setCurrentUser(currentUserData);
-                localStorage.setItem("user", JSON.stringify((this.state.currentUser)))
+            await axios.post("http://localhost:8080/users", data).then((res) => {
+                const data = JSON.stringify(res.data)
+                this.state.setCurrentUser(data);
+                localStorage.setItem("user", data)
+
+                // Need to redirect user home
             }).catch(err => console.log(err));
         },
         signOut: async () => {
