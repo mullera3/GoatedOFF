@@ -7,14 +7,14 @@ class Header extends React.Component {
     async handleLogout(evt)
     {
         evt.preventDefault()
-        let currentUser = localStorage.getItem("user")
+        let currentUser = localStorage.getItem("user");
         if (!currentUser)
         {
-            window.location.reload();
+            window.location.replace("/");
         }
         else{
             localStorage.clear();
-            window.location.reload();
+            window.location.replace("/");
         }
     }
     render() {
@@ -36,14 +36,39 @@ class Header extends React.Component {
                     <Navbar.Brand  pullLeft href="/"><Image src={store_icon } alt="Logo"/></Navbar.Brand>
                     <Nav.Link  href="/login"> LOGIN </Nav.Link>
                     <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
-
                 </Navbar>
             )
         }
-        else {
+        else if (JSON.parse(localStorageItem).Account_Access === "ADMIN") {
             return (
                 <Navbar className="justify-content-center">
-                    <Nav.Link  href="/profile">Profile</Nav.Link>
+                    <Nav.Link  href="/orders">Orders</Nav.Link>
+                    <Nav.Link href="/">Store</Nav.Link>
+                    <Nav.Link  href="/admin">Users</Nav.Link>
+                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
+                    <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
+                    <Nav.Link  onClick={this.handleLogout}>Logout</Nav.Link>
+                </Navbar>
+            )
+        }
+        else if (JSON.parse(localStorageItem).Account_Access === "SELLER")
+        {
+            return (
+                <Navbar className="justify-content-center">
+                    <Nav.Link  href="/orders">Orders</Nav.Link>
+                    <Nav.Link href = "/inventory" > Sneaks </Nav.Link>
+                    <Nav.Link href="/">Store</Nav.Link>
+                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
+                    <Nav.Link  href="/admin">Users</Nav.Link>
+                    <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
+                    <Nav.Link  onClick={this.handleLogout}>Logout</Nav.Link>
+                </Navbar>
+            )
+        }
+        else{
+            return (
+                <Navbar className="justify-content-center">
+                    <Nav.Link href = "/orders" > Orders </Nav.Link>
                     <Nav.Link href="/">Store</Nav.Link>
                     <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
                     <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>

@@ -9,6 +9,9 @@ import Register from "./pages/Register";
 // import Header from "./components/Header";
 import React from "react";
 import Header from "./components/NavBar";
+import Home from './pages/Home';
+import UsersList from './pages/UsersList';
+import Orders from './pages/Orders';
 
 
 function App() {
@@ -19,8 +22,11 @@ function App() {
         <Container>
           <BrowserRouter>
             <Switch>
-              <Route exact path="/" component={Login}/>
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/login" component={Login}/>
               <Route exact path="/register" component={Register} />
+              <Route exact path="/admin" component={UsersList}/>
+              <Route exact path="/orders" component={Orders}/>
             </Switch>
           </BrowserRouter>
         </Container>

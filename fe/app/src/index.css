@@ -65,7 +65,24 @@ form div div .btn.btn-primary.btn-block.w-100.btn.btn-primary{
   background-color: black;
   border-color: white;
 }
+a {
+  color: #030303 !important;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+   display: inline-block;
+   width: 175px;
+}
 
-/*card {*!*/
-/*  background-color: #1b5633;*/
-/*}*/
+.list-group-flush>.list-group-item {
+    font-size: 15px;
+}
+
+.card-body {
+  color: white !important;
+}
+
+button.btn.btn-primary {
+  
+}
