@@ -39,6 +39,8 @@ node_modules
 
 .env
 
-/resources
+
+
+you can always add a .gitignore file and add the following line in it. This way your git engine won't pick them up.
 
 .vscode

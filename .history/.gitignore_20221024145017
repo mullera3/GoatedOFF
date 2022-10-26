@@ -38,7 +38,3 @@ out/
 node_modules
 
 .env
-
-/resources
-
-.vscode
