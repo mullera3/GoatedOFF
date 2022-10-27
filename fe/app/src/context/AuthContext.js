@@ -26,8 +26,6 @@ export class AuthProvider extends  Component{
                 const data = JSON.stringify(res.data)
                 this.state.setCurrentUser(data);
                 localStorage.setItem("user", data)
-
-                // Need to redirect user home
             }).catch(err => console.log(err));
         },
         signOut: async () => {

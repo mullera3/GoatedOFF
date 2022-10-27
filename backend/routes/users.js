@@ -13,7 +13,7 @@ var db = db_config.db;
       snapshot.forEach(function (childSnapshot) {
         var user = childSnapshot.toJSON();
         user.id = childSnapshot.key;
-        if ((user.Email.toLowerCase() == req.body.username.toLowerCase()) & (user.Password.toLowerCase() ==req.body.password)){
+        if ((user.Email.toLowerCase() == req.body.username.toLowerCase()) & (user.Password ==req.body.password)){
         res.json(user);
         }
       });
