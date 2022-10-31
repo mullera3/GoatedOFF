@@ -6,6 +6,9 @@ import {
     withRouter
 } from "react-router-dom";
 
+import Button from 'react-bootstrap/Button';
+
+
 
 class UsersList extends Component {
 
@@ -40,6 +43,17 @@ class UsersList extends Component {
 
     }
 
+    async handleDelete(e,data) {
+        await axios.post("http://localhost:8080/users/delete", data).then((res) => {
+            if(res.status === 200) {
+                window.location.reload(true);
+            }
+            
+        }).catch(err => console.log(err));
+
+    }
+
+
       render() {
         return (
             <div className="container">
@@ -54,6 +68,7 @@ class UsersList extends Component {
                         <th>Zipcode</th>
                         <th>Email</th>
                         <th>Role</th>
+                        <th>Delete User</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,6 +81,7 @@ class UsersList extends Component {
                             <td>{user.Postal_Code}</td>
                             <td>{user.Email}</td>
                             <td>{user.Account_Access}</td>
+                            < td > < Button onClick={((e) => this.handleDelete(e, user))} variant = "danger" > Delete </Button> </td >
                         </tr>
                     )}
                 </tbody>
