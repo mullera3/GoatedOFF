@@ -86,3 +86,31 @@ a {
 button.btn.btn-primary {
   
 }
+
+h3 {
+  display: inline;
+  position:relative;
+  left: 50%;
+  margin-left: -100px;
+}
+
+.sneak_button {
+  float: right;
+  margin-top: 0;
+  background-color: #030303 !important;
+  border: white 2px solid !important;
+  vertical-align: middle !important;
+}
+
+.sneak_header
+{
+  padding-top: 2.5%;
+  padding-bottom: 15%;
+}
+
+.popUpButton {
+  float: right;
+  background-color: #030303 !important;
+  border: white 2px solid !important;
+  
+}
