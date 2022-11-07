@@ -83,10 +83,6 @@ a {
   color: white !important;
 }
 
-button.btn.btn-primary {
-  
-}
-
 h3 {
   display: inline;
   position:relative;
@@ -108,8 +104,24 @@ h3 {
   padding-bottom: 15%;
 }
 
+.popup-box{
+  text-align: center;
+}
+#close-icon{
+  float: left;
+  display: block;
+}
+
+.icon-div{
+padding: 20px;
+}
+
+.mb-3 {
+ text-align: left !important;
+}
+
 .popUpButton {
-  float: right;
+  width: 250px;
   background-color: #030303 !important;
   border: white 2px solid !important;
   

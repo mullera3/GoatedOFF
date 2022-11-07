@@ -19,7 +19,7 @@ class ForSale extends Component {
 
   componentDidMount() {
     const getSneaksForSale = async () => {
-        let currentUserData = JSON.parse(localStorage.getItem("user"));
+      let currentUserData = JSON.parse(localStorage.getItem("user"));
       const SNEAKS_URL = "http://localhost:8080/seller";
       await axios
         .post(SNEAKS_URL,currentUserData)
@@ -36,7 +36,30 @@ class ForSale extends Component {
     getSneaksForSale();
   }
 
-  addSneak(){
+  async addSneak(evt){
+    evt.preventDefault();
+    let data = {};
+    let currentUserData = JSON.parse(localStorage.getItem("user"));
+    let form = document.getElementsByTagName("form")[0];
+    for(let i = 0; i < form.length; i++)
+    {
+      data[form[i].id] = form[i].value;
+    }
+    data["sold_by"] = currentUserData.id;
+
+    const SNEAKS_URL = "http://localhost:8080/seller/sneak";
+      await axios.post(SNEAKS_URL,data)
+        .then((response) => {
+          console.log(response.status)
+          if(response.status === 200){
+            window.location.reload(true);
+          };
+        })
+        .catch((err) => {
+          console.log("Fetch Error: " + err);
+        });
+    
+
 
   }
 
@@ -60,30 +83,29 @@ class ForSale extends Component {
               content={
                 <>
                   <Form>
-                    <Form.Group className="mb-3" controlId="formSneakerName">
+                    <Form.Group className="mb-3" controlId="sneaker_name">
                       <Form.Label>Sneaker Name</Form.Label>
                       <Form.Control type="text" />
                     </Form.Group>
-                    <Form.Group
-                      className="mb-3"
-                      controlId="formSneakDescription"
-                    >
+                    <Form.Group className="mb-3" controlId="description">
                       <Form.Label>Sneaker Description</Form.Label>
                       <Form.Control type="text" />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formSneakQuantity">
+                    <Form.Group className="mb-3" controlId="price">
+                      <Form.Label>Sneaker Price</Form.Label>
+                      <Form.Control type="number" />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="quantity">
                       <Form.Label>Sneaker Quantity</Form.Label>
                       <Form.Control type="number" />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formSneakColorway">
+                    <Form.Group className="mb-3" controlId="colorway">
                       <Form.Label>Sneaker Colorway</Form.Label>
                       <Form.Control type="text" />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formSneakDate">
+                    <Form.Group className="mb-3" controlId="release_date">
                       <Form.Label>Sneaker Date</Form.Label>
                       <Form.Control type="date" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formSneakDate">
                     </Form.Group>
                   </Form>
                 </>

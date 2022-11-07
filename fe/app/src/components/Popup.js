@@ -6,11 +6,13 @@ const Popup = (props) => {
   return (
     <div className="popup-box ">
       <div className="box ">
-        <span className="close-icon" onClick={props.handleClose}>
+      <div className="icon-div">
+        <span id="close-icon" onClick={props.handleClose}>
           x
         </span>
+      </div>
         {props.content}
-        <Button className="sneak_button" onClick={props.addSneak}>
+        <Button className="popUpButton" onClick={props.addSneak}>
           Submit
         </Button>
       </div>

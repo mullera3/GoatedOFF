@@ -21,4 +21,10 @@ router.post('/', function (req, res, next) {
         });
 });
 
+router.post("/sneak", function (req, res, next) {
+  var body = req.body;
+  const result = db.ref("Sneakers").push().set(body);
+  res.sendStatus(200);
+});
+
 module.exports = router;
