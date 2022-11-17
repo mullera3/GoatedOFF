@@ -32,7 +32,6 @@ class Header extends React.Component {
             return (
                 <Navbar className="justify-content-center">
                     <Nav.Link  href="/register">REGISTER</Nav.Link>
-                    <Nav.Link href="/">STORE</Nav.Link>
                     <Navbar.Brand  pullLeft href="/"><Image src={store_icon } alt="Logo"/></Navbar.Brand>
                     <Nav.Link  href="/login"> LOGIN </Nav.Link>
                     <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
@@ -42,8 +41,8 @@ class Header extends React.Component {
         else if (JSON.parse(localStorageItem).Account_Access === "ADMIN") {
             return (
                 <Navbar className="justify-content-center">
+                    <Nav.Link href="/messages">Messages</Nav.Link>
                     <Nav.Link  href="/orders">Orders</Nav.Link>
-                    <Nav.Link href="/">Store</Nav.Link>
                     <Nav.Link  href="/admin">Users</Nav.Link>
                     <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
                     <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
@@ -54,26 +53,34 @@ class Header extends React.Component {
         else if (JSON.parse(localStorageItem).Account_Access === "SELLER")
         {
             return (
-                <Navbar className="justify-content-center">
-                    <Nav.Link  href="/orders">Orders</Nav.Link>
-                    <Nav.Link href = "/seller" > Sneaks </Nav.Link>
-                    <Nav.Link href="/">Store</Nav.Link>
-                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
-                    <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
-                    <Nav.Link  onClick={this.handleLogout}>Logout</Nav.Link>
-                </Navbar>
-            )
+              <Navbar className="justify-content-center">
+                <Nav.Link href="/messages">Messages</Nav.Link>
+                <Nav.Link href="/orders">Orders</Nav.Link>
+                <Nav.Link href="/seller"> Sneaks </Nav.Link>
+                <Navbar.Brand pullLeft href="/">
+                  <Image src={store_icon} alt="Logo" />
+                </Navbar.Brand>
+                <Nav.Link href="/cart">
+                  <Image src={cart_image} alt="Cart" />
+                </Nav.Link>
+                <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
+              </Navbar>
+            );
         }
         else{
             return (
-                <Navbar className="justify-content-center">
-                    <Nav.Link href = "/orders" > Orders </Nav.Link>
-                    <Nav.Link href="/">Store</Nav.Link>
-                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
-                    <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
-                    <Nav.Link  onClick={this.handleLogout}>Logout</Nav.Link>
-                </Navbar>
-            )
+              <Navbar className="justify-content-center">
+                <Nav.Link href="/messages">Messages</Nav.Link>
+                <Nav.Link href="/orders"> Orders </Nav.Link>
+                <Navbar.Brand pullLeft href="/">
+                  <Image src={store_icon} alt="Logo" />
+                </Navbar.Brand>
+                <Nav.Link href="/cart">
+                  <Image src={cart_image} alt="Cart" />
+                </Nav.Link>
+                <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
+              </Navbar>
+            );
         }
 
     }

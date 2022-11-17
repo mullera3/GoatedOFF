@@ -1,9 +1,7 @@
 import { Component } from "react";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
-import {
-  Button, Form
-} from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 import Popup from "../components/Popup";
 class ForSale extends Component {
   constructor(props) {
@@ -11,7 +9,7 @@ class ForSale extends Component {
     this.isSelected = props.isSelected;
     this.state = {
       sneaks: [],
-      isShowing: false
+      isShowing: false,
     };
 
     this.togglePopup = this.togglePopup.bind(this);
@@ -22,7 +20,7 @@ class ForSale extends Component {
       let currentUserData = JSON.parse(localStorage.getItem("user"));
       const SNEAKS_URL = "http://localhost:8080/seller";
       await axios
-        .post(SNEAKS_URL,currentUserData)
+        .post(SNEAKS_URL, currentUserData)
         .then((response) => {
           this.setState({
             sneaks: response.data,
@@ -36,31 +34,28 @@ class ForSale extends Component {
     getSneaksForSale();
   }
 
-  async addSneak(evt){
+  async addSneak(evt) {
     evt.preventDefault();
     let data = {};
     let currentUserData = JSON.parse(localStorage.getItem("user"));
     let form = document.getElementsByTagName("form")[0];
-    for(let i = 0; i < form.length; i++)
-    {
+    for (let i = 0; i < form.length; i++) {
       data[form[i].id] = form[i].value;
     }
     data["sold_by"] = currentUserData.id;
 
     const SNEAKS_URL = "http://localhost:8080/seller/sneak";
-      await axios.post(SNEAKS_URL,data)
-        .then((response) => {
-          console.log(response.status)
-          if(response.status === 200){
-            window.location.reload(true);
-          };
-        })
-        .catch((err) => {
-          console.log("Fetch Error: " + err);
-        });
-    
-
-
+    await axios
+      .post(SNEAKS_URL, data)
+      .then((response) => {
+        console.log(response.status);
+        if (response.status === 200) {
+          window.location.reload(true);
+        }
+      })
+      .catch((err) => {
+        console.log("Fetch Error: " + err);
+      });
   }
 
   togglePopup() {
@@ -133,6 +128,29 @@ class ForSale extends Component {
                 <td>{sneak.description} </td>
                 <td> {sneak.price} </td> <td> {sneak.quantity} </td>
                 <td> {sneak.colorway} </td> <td> {sneak.release_date} </td>
+                <td>
+                  <Link
+                    className="btn btn-info"
+                    to={{
+                      pathname: "/edit",
+                      state: sneak, // your data array of objects
+                    }}
+                    replace
+                  >
+                    Edit
+                  </Link>
+                  {/* <Button
+                    value={sneak}
+                    onClick={() =>
+                      this.props.history.push({
+                        pathname: "/edit",
+                        state: sneak,
+                      })
+                    }
+                  >
+                    Edit
+                  </Button> */}
+                </td>
               </tr>
             ))}
           </tbody>
