@@ -22,6 +22,7 @@ class ForSale extends Component {
       await axios
         .post(SNEAKS_URL, currentUserData)
         .then((response) => {
+          console.log(response.data)
           this.setState({
             sneaks: response.data,
           });
@@ -56,6 +57,24 @@ class ForSale extends Component {
       .catch((err) => {
         console.log("Fetch Error: " + err);
       });
+  }
+
+    sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+  editSneak(sneak){
+
+
+
+    this.togglePopup();
+    this.sleep(100)
+    .then(() => {
+      let form = document.getElementsByTagName("form")[0];
+      for (let i = 0; i < form.length; i++) {
+        form[form[i].id].value = sneak[form[i].id];
+      }
+    })
   }
 
   togglePopup() {
@@ -130,26 +149,11 @@ class ForSale extends Component {
                 <td> {sneak.colorway} </td> <td> {sneak.release_date} </td>
                 <td>
                   <Link
-                    className="btn btn-info"
-                    to={{
-                      pathname: "/edit",
-                      state: sneak, // your data array of objects
-                    }}
-                    replace
+                    className="edit-sneak btn btn-info"
+                    onClick={this.editSneak.bind(this,sneak)}
                   >
                     Edit
                   </Link>
-                  {/* <Button
-                    value={sneak}
-                    onClick={() =>
-                      this.props.history.push({
-                        pathname: "/edit",
-                        state: sneak,
-                      })
-                    }
-                  >
-                    Edit
-                  </Button> */}
                 </td>
               </tr>
             ))}

@@ -11,7 +11,6 @@ import UsersList from './pages/UsersList';
 import Orders from './pages/Orders';
 import ForSale from './pages/ForSale';
 import MessagesList from './pages/MessagesList';
-import EditSneaker from './pages/EditSneaker';
 import Cart from './pages/Cart';
 
 
@@ -28,7 +27,6 @@ function App() {
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/seller" component={ForSale} />
             <Route exact path="/messages" component={MessagesList} />
-            <Route exact path="/edit" component={EditSneaker} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/" component={Home} />
           </Switch>

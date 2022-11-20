@@ -157,3 +157,10 @@ h3 {
   border: white 1px solid !important;
   height: 50%;
 }
+
+
+.edit-sneak{
+  background-color: #030303 !important; 
+  color: white !important;
+  border: 2px solid #030303  !important;
+}
