@@ -32,7 +32,7 @@ class Header extends React.Component {
             return (
                 <Navbar className="justify-content-center">
                     <Nav.Link  href="/register">REGISTER</Nav.Link>
-                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon } alt="Logo"/></Navbar.Brand>
+                    <Navbar.Brand  href="/"><Image src={store_icon } alt="Logo"/></Navbar.Brand>
                     <Nav.Link  href="/login"> LOGIN </Nav.Link>
                     <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
                 </Navbar>
