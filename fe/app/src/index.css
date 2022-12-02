@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-body{
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+body {
   margin: 0;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #030303;
@@ -10,11 +10,11 @@ body{
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
-.card-title.h5{
+.card-title.h5 {
   font-size: 20px;
   width: 250px;
   white-space: nowrap;
@@ -22,8 +22,7 @@ code {
   text-overflow: ellipsis;
 }
 
-.card-subtitle.h6
-{
+.card-subtitle.h6 {
   font-size: 15px;
 }
 
@@ -42,8 +41,8 @@ code {
   padding: 10px;
 }
 
-#checkout-form{
-  font-size:large;
+#checkout-form {
+  font-size: large;
   padding: 15px;
 }
 
@@ -53,14 +52,13 @@ form {
   border: 10px solid #000000;
   padding: 10px 0;
   margin: 50px auto;
-
 }
 
-h3{
+h3 {
   text-align: center;
 }
 
-form div div .btn.btn-primary.btn-block.w-100.btn.btn-primary{
+form div div .btn.btn-primary.btn-block.w-100.btn.btn-primary {
   color: white;
   background-color: black;
   border-color: white;
@@ -71,18 +69,98 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-   display: inline-block;
-   width: 175px;
+  display: inline-block;
+  width: 175px;
 }
 
-.list-group-flush>.list-group-item {
-    font-size: 15px;
+.list-group-flush > .list-group-item {
+  font-size: 15px;
 }
 
 .card-body {
   color: white !important;
 }
 
-button.btn.btn-primary {
-  
+h3 {
+  display: inline;
+  position: relative;
+  left: 50%;
+  margin-left: -100px;
+}
+
+.sneak_button {
+  float: right;
+  margin-top: 0;
+  background-color: #030303 !important;
+  border: white 2px solid !important;
+  vertical-align: middle !important;
+}
+
+.sneak_header {
+  padding-top: 2.5%;
+  padding-bottom: 15%;
+}
+
+.popup-box {
+  text-align: center;
+}
+#close-icon {
+  float: left;
+  display: block;
+}
+
+.icon-div {
+  padding: 20px;
+}
+
+.mb-3 {
+  text-align: left !important;
+}
+
+.popUpButton {
+  width: 250px;
+  background-color: #030303 !important;
+  border: white 2px solid !important;
+}
+
+.messages {
+  padding-top: 30px;
+}
+
+#messages-header {
+  padding-top: 30px !important;
+  padding-bottom: 20px;
+  display: block;
+  left: 0%;
+}
+
+#messages-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+#checkout-form .card {
+  display: contents;
+}
+
+#checkout-form .card form {
+  border: 0;
+}
+
+.card-button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  color: black !important;
+  background-color: white !important;
+  border: white 1px solid !important;
+  height: 50%;
+}
+
+
+.edit-sneak{
+  background-color: #030303 !important; 
+  color: white !important;
+  border: 2px solid #030303  !important;
 }

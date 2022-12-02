@@ -7,13 +7,13 @@ var db = db_config.db;
 router.post('/', function (req, res, next) {
     var key = req.body.id;
     var query = db.ref("Order");
-    let orders = []
+    var orders = [];
     query.once("value")
         .then(function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
                 var order = childSnapshot.toJSON();
                if(order.user_id === key){
-                    orders.push(order)
+                    orders.push(order);
                }
             });
             res.json(orders);

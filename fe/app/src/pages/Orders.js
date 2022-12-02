@@ -34,7 +34,7 @@ class Orders extends Component {
   render() {
     return ( 
       <div className="container">
-        <h3 className="p-3 text-center"> Orders </h3>{" "}
+        <h3 className="p-3 text-center"> Orders </h3>
         <table className="table table-striped table-bordered">
           <thead>
             <tr>

@@ -5,10 +5,13 @@ var logger = require('morgan');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var homeRouter = require('./routes/home');
 var orderRouter = require('./routes/orders');
+var sellerRouter = require('./routes/seller');
 
 
 // Get a list of cities from your database
@@ -30,6 +33,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/home', homeRouter);
 app.use('/orders',orderRouter);
+app.use('/seller',sellerRouter);
 
 module.exports = app;
 
