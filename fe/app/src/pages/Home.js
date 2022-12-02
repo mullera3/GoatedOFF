@@ -75,6 +75,7 @@ class Home extends Component {
     } else this.state.cart.push(item);
 
     sessionStorage.setItem("items", JSON.stringify(this.state.cart));
+    alert("Sneaker added!");
   }
 
   render() {
