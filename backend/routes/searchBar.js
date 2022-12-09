@@ -2,8 +2,8 @@ const data2 = {
     columns: ['Name', 'Description', 'Accept Bid', 'Address'],
     rows: [
         ['Air Jordan', '....', 'Yes', '1200 W Pensacola Str, Tallahassee, FL, 32304'],
-        ['Sonya Frost', '....', 'No', '1922 Mission Rd, Tallahassee, FL, 32304'],
-        ['Jena Gaines', '....', 'Yes', 30, '2008/12/19', '$90,560'],
+        ['Nike Air Max', '....', 'No', '1922 Mission Rd, Tallahassee, FL, 32304'],
+        ['Adidas Superstar', '....', 'Yes', 30, '2008/12/19', '$90,560'],
         ['Quinn Flynn', '....', 'No', 22, '2013/03/03', '$342,000'],
         ['Charde Marshall', '....', 'No', 36, '2008/10/16', '$470,600'],
         ['Haley Kennedy', '....', 'Yes', 43, '2012/12/18', '$313,500'],
