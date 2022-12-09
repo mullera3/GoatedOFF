@@ -13,6 +13,7 @@ import ForSale from './pages/ForSale';
 import MessagesList from './pages/MessagesList';
 import Cart from './pages/Cart';
 import ReportPage from './pages/ReportPage';
+import Favorites from './pages/Favorites';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route exact path="/messages" component={MessagesList} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/reports" component={ReportPage} />
+            <Route exact path="/favorites" component={Favorites} />
             <Route exact path="/" component={Home} />
           </Switch>
         </BrowserRouter>

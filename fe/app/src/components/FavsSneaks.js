@@ -2,8 +2,7 @@ import React from "react";
 import { Button, Card, Col, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Sneaks({ sneak, onClick, isSelected }) {
-  console.log(onClick[1])
+function FavSneaks({ sneak,onClick,isSelected }) {
   let sneak_thumbnail = sneak.thumbnail;
   let shoeName = sneak.shoeName;
   let retailPrice = sneak.retailPrice;
@@ -45,26 +44,15 @@ function Sneaks({ sneak, onClick, isSelected }) {
               <div>
                 <Card.Text>
                   Retail Price: {retailPrice}
-                  <Button
-                    value={JSON.stringify(sneak)}
-                    style={{
-                      color: "black",
-                      backgroundColor: "white",
-                      borderColor: "black",
-                      float: "right",
-                    }}
-                    onClick={onClick[0]}
-                  >
-                    {" "}
-                    Add to Cart
-                  </Button>
-                  <Button 
+                </Card.Text>
+                <Button 
+                onClick={onClick}
                   style={{color: "black",
                    backgroundColor: "white", 
                    borderColor:"black", 
                    float: "right"}} 
-                  onClick={onClick[1]} > Favorite </Button>
-                </Card.Text>
+                   > Remove  
+                   </Button>
               </div>
             </Card.Text>
           </Card.Body>
@@ -76,4 +64,4 @@ function Sneaks({ sneak, onClick, isSelected }) {
 
 
 
-export default Sneaks;
+export default FavSneaks;
