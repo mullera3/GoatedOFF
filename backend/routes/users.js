@@ -69,4 +69,50 @@ router.post('/delete', function (req, res, next) {
 });
 
 
+router.post('/favorites', function (req, res, next) {
+  var newFav = req.body;
+  var query = db.ref("Favorites");
+  query.push(newFav);
+});
+
+router.post('/favs', function (req, res, next) {
+  var currentUser = req.body.id;
+  var query = db.ref("Favorites");
+  let favs = new Set()
+
+  query.once("value")
+    .then(function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        var fav = childSnapshot.toJSON();
+    
+        if (currentUser === fav.user.id) {
+          favs.add(fav)
+        }
+      });
+      favs = Array.from(favs);
+      res.json(favs)
+    });
+});
+
+router.post('/removeFav', function (req, res, next) {
+  var currentSneak = req.body;
+  var query = db.ref("Favorites");
+
+  query.once("value")
+    .then(function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        var obj = childSnapshot.toJSON();
+    
+        if (_.isEqual(obj, currentSneak)) {
+          childSnapshot.ref.remove()
+        }
+      });
+    });
+});
+
+
+
+
+
+
 module.exports = router;
