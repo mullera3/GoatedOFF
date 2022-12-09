@@ -42,12 +42,17 @@ router.get("/report", function (req, res, next) {
   query.once("value").then(function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
       var user = childSnapshot.toJSON();
+      console.log(user)
       if(!data.hasOwnProperty(user.sold_by)){
+        console.log(data)
         data[user.sold_by]  = 1;
       } else{
+
+
         data[user.sold_by] += 1;
       }
     });
+                console.log(data);
     res.json(Object.entries(data));
   });
 });
@@ -67,6 +72,12 @@ router.post('/delete', function (req, res, next) {
       });
     });
 });
+
+router.post("/newAccount", function (req, res, next) {
+  var newUser = req.body;
+  var query = db.ref("User").push(newUser);
+});
+
 
 
 module.exports = router;
