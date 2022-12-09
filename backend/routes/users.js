@@ -42,12 +42,17 @@ router.get("/report", function (req, res, next) {
   query.once("value").then(function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
       var user = childSnapshot.toJSON();
+      console.log(user)
       if(!data.hasOwnProperty(user.sold_by)){
+        console.log(data)
         data[user.sold_by]  = 1;
       } else{
+
+
         data[user.sold_by] += 1;
       }
     });
+                console.log(data);
     res.json(Object.entries(data));
   });
 });
@@ -67,6 +72,58 @@ router.post('/delete', function (req, res, next) {
       });
     });
 });
+
+router.post("/newAccount", function (req, res, next) {
+  var newUser = req.body;
+  var query = db.ref("User").push(newUser);
+});
+
+
+
+router.post('/favorites', function (req, res, next) {
+  var newFav = req.body;
+  var query = db.ref("Favorites");
+  query.push(newFav);
+});
+
+router.post('/favs', function (req, res, next) {
+  var currentUser = req.body.id;
+  var query = db.ref("Favorites");
+  let favs = new Set()
+
+  query.once("value")
+    .then(function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        var fav = childSnapshot.toJSON();
+    
+        if (currentUser === fav.user.id) {
+          favs.add(fav)
+        }
+      });
+      favs = Array.from(favs);
+      res.json(favs)
+    });
+});
+
+router.post('/removeFav', function (req, res, next) {
+  var currentSneak = req.body;
+  var query = db.ref("Favorites");
+
+  query.once("value")
+    .then(function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        var obj = childSnapshot.toJSON();
+    
+        if (_.isEqual(obj, currentSneak)) {
+          childSnapshot.ref.remove()
+        }
+      });
+    });
+});
+
+
+
+
 
 
 module.exports = router;

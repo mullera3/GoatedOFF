@@ -38,7 +38,24 @@ class Home extends Component {
     getSneaks();
   }
 
-  onClick(evt) {
+  addToFavorites(evt){
+    alert("Added To Favorites");
+    let sneaker = evt;
+    sneaker.user = JSON.parse(localStorage.getItem("user"));
+
+    const SNEAKS_URL = "http://localhost:8080/users/favorites";
+    axios
+        .post(SNEAKS_URL,sneaker)
+        .then((response) => {
+        })
+        .catch((err) => {
+          console.log("Fetch Error: " + err);
+        });
+    };
+    
+
+
+  onClick(evt){
     function isItemFound(item, cart) {
       let value = false;
       let index = -1;
@@ -85,7 +102,7 @@ class Home extends Component {
         {this.state.sneaks.map((sneak, i) => (
           <Sneaks
             sneak={sneak}
-            onClick={this.onClick.bind(this, sneak)}
+            onClick={[this.onClick.bind(this, sneak),this.addToFavorites.bind(this,sneak)]}
             isSelected={false}
             key={i}
           />
@@ -94,5 +111,4 @@ class Home extends Component {
     );
   }
 }
-
-    export default withRouter(Home);
+export default withRouter(Home);
