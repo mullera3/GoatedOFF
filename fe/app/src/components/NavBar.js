@@ -14,6 +14,7 @@ class Header extends React.Component {
         }
         else{
             localStorage.clear();
+            sessionStorage.clear();
             window.location.replace("/");
         }
     }
@@ -40,15 +41,20 @@ class Header extends React.Component {
         }
         else if (JSON.parse(localStorageItem).Account_Access === "ADMIN") {
             return (
-                <Navbar className="justify-content-center">
-                    <Nav.Link href="/messages">Messages</Nav.Link>
-                    <Nav.Link  href="/orders">Orders</Nav.Link>
-                    <Nav.Link  href="/admin">Users</Nav.Link>
-                    <Navbar.Brand  pullLeft href="/"><Image src={store_icon} alt="Logo"/></Navbar.Brand>
-                    <Nav.Link  href="/cart"><Image src={cart_image} alt="Cart"/></Nav.Link>
-                    <Nav.Link  onClick={this.handleLogout}>Logout</Nav.Link>
-                </Navbar>
-            )
+              <Navbar className="justify-content-center">
+                <Nav.Link href="/messages">Messages</Nav.Link>
+                <Nav.Link href="/orders">Orders</Nav.Link>
+                <Nav.Link href="/reports">Reports</Nav.Link>
+                <Nav.Link href="/admin">Users</Nav.Link>
+                <Navbar.Brand pullLeft href="/">
+                  <Image src={store_icon} alt="Logo" />
+                </Navbar.Brand>
+                <Nav.Link href="/cart">
+                  <Image src={cart_image} alt="Cart" />
+                </Nav.Link>
+                <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
+              </Navbar>
+            );
         }
         else if (JSON.parse(localStorageItem).Account_Access === "SELLER")
         {

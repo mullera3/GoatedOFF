@@ -35,6 +35,23 @@ router.get('/admin', function (req, res, next) {
     });
 });
 
+router.get("/report", function (req, res, next) {
+  let data = {}
+  var query = db.ref("Sneakers");
+
+  query.once("value").then(function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      var user = childSnapshot.toJSON();
+      if(!data.hasOwnProperty(user.sold_by)){
+        data[user.sold_by]  = 1;
+      } else{
+        data[user.sold_by] += 1;
+      }
+    });
+    res.json(Object.entries(data));
+  });
+});
+
 router.post('/delete', function (req, res, next) {
   var currentUser = req.body;
   var query = db.ref("User").orderByKey();
