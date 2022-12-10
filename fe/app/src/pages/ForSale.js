@@ -22,7 +22,6 @@ class ForSale extends Component {
       await axios
         .post(SNEAKS_URL, currentUserData)
         .then((response) => {
-          console.log(response.data)
           this.setState({
             sneaks: response.data,
           });
@@ -35,6 +34,23 @@ class ForSale extends Component {
     getSneaksForSale();
   }
 
+ async removeSneak(evt) {
+    let sneaker = evt;
+
+    const SNEAKS_URL = "http://localhost:8080/seller/remove";
+    await axios
+      .post(SNEAKS_URL, sneaker)
+      .then((response) => {
+        if (response.status === 200) {
+          window.location.reload(true);
+        }
+      })
+      .catch((err) => {
+        console.log("Fetch Error: " + err);
+      });
+
+  }
+
   async addSneak(evt) {
     evt.preventDefault();
     let data = {};
@@ -45,11 +61,11 @@ class ForSale extends Component {
     }
     data["sold_by"] = currentUserData.id;
 
+
     const SNEAKS_URL = "http://localhost:8080/seller/sneak";
     await axios
       .post(SNEAKS_URL, data)
       .then((response) => {
-        console.log(response.status);
         if (response.status === 200) {
           window.location.reload(true);
         }
@@ -59,22 +75,18 @@ class ForSale extends Component {
       });
   }
 
-    sleep(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
+  sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
-  editSneak(sneak){
-
-
-
+  editSneak(sneak) {
     this.togglePopup();
-    this.sleep(100)
-    .then(() => {
+    this.sleep(100).then(() => {
       let form = document.getElementsByTagName("form")[0];
       for (let i = 0; i < form.length; i++) {
         form[form[i].id].value = sneak[form[i].id];
       }
-    })
+    });
   }
 
   togglePopup() {
@@ -97,6 +109,10 @@ class ForSale extends Component {
               content={
                 <>
                   <Form>
+                    <Form.Group className="mb-3" controlId="id">
+                      <Form.Label>ID</Form.Label>
+                      <Form.Control disabled type="number" />
+                    </Form.Group>
                     <Form.Group className="mb-3" controlId="sneaker_name">
                       <Form.Label>Sneaker Name</Form.Label>
                       <Form.Control type="text" />
@@ -150,10 +166,18 @@ class ForSale extends Component {
                 <td>
                   <Link
                     className="edit-sneak btn btn-info"
-                    onClick={this.editSneak.bind(this,sneak)}
+                    onClick={this.editSneak.bind(this, sneak)}
                   >
                     Edit
                   </Link>
+                </td>
+                <td>
+                  <Button
+                    className="edit-sneak btn btn-info"
+                    onClick={this.removeSneak.bind(this, sneak)}
+                  >
+                    Remove
+                  </Button>
                 </td>
               </tr>
             ))}

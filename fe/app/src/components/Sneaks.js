@@ -3,7 +3,6 @@ import { Button, Card, Col, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function Sneaks({ sneak, onClick, isSelected }) {
-  console.log(onClick[1])
   let sneak_thumbnail = sneak.thumbnail;
   let shoeName = sneak.shoeName;
   let retailPrice = sneak.retailPrice;
@@ -45,25 +44,34 @@ function Sneaks({ sneak, onClick, isSelected }) {
               <div>
                 <Card.Text>
                   Retail Price: {retailPrice}
+                  <hr />
                   <Button
+                    className="sneak-button"
                     value={JSON.stringify(sneak)}
                     style={{
                       color: "black",
                       backgroundColor: "white",
                       borderColor: "black",
-                      float: "right",
+                      float: "left",
                     }}
                     onClick={onClick[0]}
                   >
                     {" "}
                     Add to Cart
                   </Button>
-                  <Button 
-                  style={{color: "black",
-                   backgroundColor: "white", 
-                   borderColor:"black", 
-                   float: "right"}} 
-                  onClick={onClick[1]} > Favorite </Button>
+                  <Button
+                    className="sneak-button"
+                    style={{
+                      color: "black",
+                      backgroundColor: "white",
+                      borderColor: "black",
+                      float: "right",
+                    }}
+                    onClick={onClick[1]}
+                  >
+                    {" "}
+                    Favorite{" "}
+                  </Button>
                 </Card.Text>
               </div>
             </Card.Text>

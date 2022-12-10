@@ -32,7 +32,7 @@ class Cart extends React.Component {
     };
 
     await axios
-      .post("http://localhost:8080/api/purchaseOrder", data)
+      .post("http://localhost:8080/users/purchaseOrder", data)
       .then((res) => {
         sessionStorage.clear();
         alert("Success");

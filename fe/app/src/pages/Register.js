@@ -13,6 +13,8 @@ class Register extends Component {
         this.passwordRef = React.createRef();
         this.accountType = React.createRef();
         this.zipcode = React.createRef();
+        this.Address = React.createRef();
+        this.City = React.createRef();
 
         this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -30,16 +32,18 @@ class Register extends Component {
             Postal_Code: this.zipcode.current.value,
             State:'FL',
             created_At: new Date(),
-            updated_AT: new Date()
+            updated_AT: new Date(),
+            Address: this.Address.current.value,
+            City: this.City.current.value,
         }
 
 
-        console.log(data)
 
         await axios.post("http://localhost:8080/users/newAccount", data).then((res) => {
             alert("Success")
+               window.location.replace("/");
         }).catch(err => console.log(err));
-        this.props.history.push("/");
+
     }
 
 
@@ -65,6 +69,14 @@ class Register extends Component {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" required ref={this.passwordRef} />
               </Form.Group>
+              <Form.Group id="address" className="mb-3">
+                <Form.Label>Address</Form.Label>
+                <Form.Control type="text" required ref={this.Address} />
+              </Form.Group>
+              <Form.Group id="city" className="mb-3">
+                <Form.Label>City</Form.Label>
+                <Form.Control type="text" required ref={this.City} />
+              </Form.Group>
               <Form.Group id="zipcode" className="mb-3">
                 <Form.Label>Zipcode</Form.Label>
                 <Form.Control type="text" required ref={this.zipcode} />
@@ -74,12 +86,8 @@ class Register extends Component {
                 ref={this.accountType}
                 aria-label="Default select example"
               >
-                <option value="GENERAL">
-                  GENERAL
-                </option>
-                <option value="SELLER">
-                  SELLER
-                </option>
+                <option value="GENERAL">GENERAL</option>
+                <option value="SELLER">SELLER</option>
               </Form.Select>
               <div className="p-2">
                 <Form.Group>

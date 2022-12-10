@@ -6,7 +6,7 @@ var sneaks = new SneaksAPI();
 /* GET users listing. */
 router.get('/', function (req, res, next) {
     //getProducts(keyword, limit, callback) takes in a keyword and limit and returns a product array 
-    var count = 80;
+    var count = 50;
     sneaks.getMostPopular(count, function (error, products) {
         if (error) {
             console.log(error);

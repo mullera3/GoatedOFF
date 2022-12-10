@@ -52,7 +52,6 @@ class Home extends Component {
           console.log("Fetch Error: " + err);
         });
     };
-    
 
 
   onClick(evt){

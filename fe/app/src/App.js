@@ -14,6 +14,8 @@ import MessagesList from './pages/MessagesList';
 import Cart from './pages/Cart';
 import ReportPage from './pages/ReportPage';
 import Favorites from './pages/Favorites';
+import BidsList from './pages/BidsList';
+import ForBid from './pages/ForBid';
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/reports" component={ReportPage} />
             <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/bids" component={BidsList} />
+            <Route exact path="/forBid" component={ForBid} />
             <Route exact path="/" component={Home} />
           </Switch>
         </BrowserRouter>

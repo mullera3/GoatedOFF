@@ -8,7 +8,6 @@ import {
 import {
   withRouter
 } from "react-router-dom";
-import Sneaks from "../components/Sneaks";
 import FavSneaks from "../components/FavsSneaks";
 
 

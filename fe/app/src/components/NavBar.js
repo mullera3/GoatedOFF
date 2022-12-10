@@ -42,8 +42,9 @@ class Header extends React.Component {
         else if (JSON.parse(localStorageItem).Account_Access === "ADMIN") {
             return (
               <Navbar className="justify-content-center">
+                <Nav.Link href="/forBid">For Bid</Nav.Link>
+                <Nav.Link href="/bids">Bids</Nav.Link>
                 <Nav.Link href="/favorites">Favorites</Nav.Link>
-                <Nav.Link href="/messages">Messages</Nav.Link>
                 <Nav.Link href="/orders">Orders</Nav.Link>
                 <Nav.Link href="/reports">Reports</Nav.Link>
                 <Nav.Link href="/admin">Users</Nav.Link>
@@ -61,8 +62,8 @@ class Header extends React.Component {
         {
             return (
               <Navbar className="justify-content-center">
+                <Nav.Link href="/bids">Bids</Nav.Link>
                 <Nav.Link href="/favorites">Favorites</Nav.Link>
-                <Nav.Link href="/messages">Messages</Nav.Link>
                 <Nav.Link href="/orders">Orders</Nav.Link>
                 <Nav.Link href="/seller"> Sneaks </Nav.Link>
                 <Navbar.Brand pullLeft href="/">
@@ -78,8 +79,9 @@ class Header extends React.Component {
         else{
             return (
               <Navbar className="justify-content-center">
+                <Nav.Link href="/forBid">For Bid</Nav.Link>
+                <Nav.Link href="/bids">Bids</Nav.Link>
                 <Nav.Link href="/favorites">Favorites</Nav.Link>
-                <Nav.Link href="/messages">Messages</Nav.Link>
                 <Nav.Link href="/orders"> Orders </Nav.Link>
                 <Navbar.Brand pullLeft href="/">
                   <Image src={store_icon} alt="Logo" />

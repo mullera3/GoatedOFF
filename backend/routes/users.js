@@ -121,6 +121,41 @@ router.post('/removeFav', function (req, res, next) {
     });
 });
 
+router.post("/bid", function (req, res, next) {
+  var currentSneak = req.body;
+  var query = db.ref("Bids").push(currentSneak);
+  res.sendStatus(200);
+});
+
+router.post("/bids", function (req, res, next) {
+  var b = req.body;
+  var query = db.ref("Bids");
+  let bids  = [];
+  query.once("value").then(function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      var obj = childSnapshot.toJSON();
+      if ((obj.id === b.id) || (obj.sold_by === b.id) ){
+      bids.push(obj);
+      }
+    });
+    res.json(bids);
+  });
+});
+
+router.post("/remove-bid", function (req, res, next) {
+  var b = req.body;
+  var query = db.ref("Bids");
+  query.once("value").then(function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      var obj = childSnapshot.toJSON();
+
+      if (_.isEqual(obj,b)) {
+        childSnapshot.ref.remove();
+      }
+    });
+    res.json(200);
+  });
+});
 
 
 
